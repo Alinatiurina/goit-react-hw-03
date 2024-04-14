@@ -4,7 +4,6 @@ export default function SearchBox({value, onType }) {
             <p>Find contacts by name</p>
             <input
                 type="text"
-                name="text"
                 value={value}
                 onChange={(event) => onType(event.target.value)} />
              
