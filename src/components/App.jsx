@@ -3,7 +3,7 @@ import SearchBox from "./SeachBox/searchBox";
 import ContactList from "./ContactList/contactList";
 import contacts from "../contacts.json";
 import { useState } from "react";
-import { nanoid } from 'nanoid';
+import * as Yup from "yup";
 
 
 export default function App() {
