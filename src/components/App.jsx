@@ -9,23 +9,29 @@ import { nanoid } from 'nanoid';
 export default function App() {
   const [contact, setContact] = useState(contacts)
   const [filter, setFilter] = useState('')
-  
+
+  const visibleContact = contact.filter((cont) =>
+    cont.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
   const addContact = (newContact) => {
     setContact((prevContacts) => {
       return [...prevContacts, newContact];
     });
   };
 
-  const visibleContact = contact.filter((cont) =>
-    cont.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const deleteContact = (contactId) => {
+    setContact(prevContacts => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
+    });
+  };
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onType={setFilter} />
-      <ContactList contacts={visibleContact} />
+      <ContactList contacts={visibleContact} onDelete={deleteContact} />
     </div>
 
   );

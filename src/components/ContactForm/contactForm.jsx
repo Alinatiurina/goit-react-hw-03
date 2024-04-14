@@ -1,9 +1,10 @@
- import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { nanoid } from 'nanoid';
 
 export default function ContactForm({onAdd}) {
     const handleSubmit = (values, actions) => {
         onAdd({
-            id: Date.now(),
+            id: nanoid(),
             name: values.name,
             number: values.number,
         });
