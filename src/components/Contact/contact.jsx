@@ -10,7 +10,7 @@ export default function Contact({onDelete, contacts: {
     return (
         <div className={css.container}>
             <div className={css.contact}>
-                <p className={css.text}><FaUser /> { name}</p>
+                <p className={css.text}><FaUser /> {name}</p>
                 <p className={css.text}><BsFillTelephoneFill/> {number}</p>
             </div>
             <button className={css.button} onClick={()=>onDelete(id)}>Delete</button>

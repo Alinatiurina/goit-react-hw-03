@@ -19,7 +19,6 @@ export default function App() {
   const visibleContact = contact.filter((cont) =>
     cont.name.toLowerCase().includes(filter.toLowerCase())
   );
-
   
   const addContact = (newContact) => {
     setContact((prevContacts) => {
