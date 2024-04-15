@@ -8,9 +8,7 @@ import { useEffect, useState } from "react";
 
 const getSaveContacts = () => {
   const savedContacts = localStorage.getItem('contacts');
-  return savedContacts !== null ?
-      JSON.parse(savedContacts)
-      : contacts;
+  return savedContacts !== '[]' ?JSON.parse(savedContacts): contacts;
 };
 
 export default function App() {
