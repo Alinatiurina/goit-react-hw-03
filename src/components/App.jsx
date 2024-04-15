@@ -2,18 +2,25 @@ import ContactForm from "./ContactForm/contactForm";
 import SearchBox from "./SeachBox/searchBox";
 import ContactList from "./ContactList/contactList";
 import contacts from "../contacts.json";
-import { useState } from "react";
-import * as Yup from "yup";
+import { useEffect, useState } from "react";
 
+
+
+const getSaveContacts = () => {
+  const savedContacts = localStorage.getItem('contacts');
+  return savedContacts != '[]' ? JSON.parse(savedContacts) : contacts
+};
 
 export default function App() {
-  const [contact, setContact] = useState(contacts)
+
+  const [contact, setContact] = useState(getSaveContacts);
   const [filter, setFilter] = useState('')
 
   const visibleContact = contact.filter((cont) =>
     cont.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  
   const addContact = (newContact) => {
     setContact((prevContacts) => {
       return [...prevContacts, newContact];
@@ -26,6 +33,10 @@ export default function App() {
     });
   };
 
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contact))
+  }, [contact]);
+  
   return (
     <div>
       <h1>Phonebook</h1>
